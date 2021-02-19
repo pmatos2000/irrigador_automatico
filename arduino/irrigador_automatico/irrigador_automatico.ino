@@ -2,7 +2,10 @@
 #define VALOR_SOLO_MOLHADO 768
 #define VALOR_SOLO_SECO 256
 
+#define ACIONAMENTO_MOTOR 12
+
 float valorSensor = 0;
+bool motorLigado = false;
 
 namespace TipoDeSolo{
   enum{
@@ -43,12 +46,16 @@ void escrevaSaidaSeria(){
   }
 }
 
+void modificaAcionamentoMotor(bool valor){
+  motorLigado = valor;
+  digitalWrite(ACIONAMENTO_MOTOR, valor ? HIGH : LOW);
+}
 void setup() {
-  Serial.begin(9600); 
+  Serial.begin(9600);
+  pinMode(ACIONAMENTO_MOTOR, OUTPUT);
 }
 
 void loop() {
   delay(1000);
-  realizaLeituraSensor();
-  escrevaSaidaSeria();
+  modificaAcionamentoMotor(!motorLigado);
 }
