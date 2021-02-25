@@ -1,8 +1,9 @@
+#include <SD.h>
 #define ENTRADA_SENSOR A0 //Pino usado para a leitura do sensor
 #define VALOR_SOLO_MOLHADO 768
 #define VALOR_SOLO_SECO 256
 
-#define ACIONAMENTO_MOTOR 12
+#define ACIONAMENTO_MOTOR 9
 
 float valorSensor = 0;
 bool motorLigado = false;
