@@ -11,7 +11,7 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="conexao">Conexão</string>
-    <string name="configuracao">Configuraçãoo</string>
+    <string name="configuracao">Configuração</string>
     <string name="relatorio">Relatório</string>
     <string name="controle_manual">Controle Manual</string>
 </resources>
