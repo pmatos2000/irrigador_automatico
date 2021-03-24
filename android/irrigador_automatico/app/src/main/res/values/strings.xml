@@ -14,4 +14,6 @@
     <string name="configuracao">Configuração</string>
     <string name="relatorio">Relatório</string>
     <string name="controle_manual">Controle Manual</string>
+    <string name="buscar_conexao">Buscar conexão</string>
+    <string name="hora_atual">Hora atual: HH:MM</string>
 </resources>

@@ -3,23 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_inicio">
 
     <fragment
-        android:id="@+id/nav_home"
+        android:id="@+id/nav_inicio"
         android:name="br.labmult.irrigadorautomatico.ui.inicio.InicioFragment"
         android:label="Inicio"
-        tools:layout="@layout/fragment_inicio" />
+        tools:layout="@layout/fragment_inicio">
+        <action
+            android:id="@+id/acao_card_conexao"
+            app:destination="@id/nav_conexao" />
+    </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="br.labmult.irrigadorautomatico.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_conexao"
+        android:name="br.labmult.irrigadorautomatico.ui.conexao.ConexaoFragment"
+        android:label="Conexão"
+        tools:layout="@layout/fragment_conexao" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_configuracao"
         android:name="br.labmult.irrigadorautomatico.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:label="Configuração"
+        tools:layout="@layout/fragment_configuracao" />
 </navigation>
