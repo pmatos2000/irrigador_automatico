@@ -1,13 +1,21 @@
 package br.labmult.irrigadorautomatico.ui.conexao
 
-import androidx.lifecycle.LiveData
+
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
+
 class ConexaoViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is gallery Fragment"
+    val listaDispositivos =  MutableLiveData<MutableList<BluetoothInfo>>()
+
+    init {
+        listaDispositivos.value = ArrayList()
     }
-    val text: LiveData<String> = _text
+    fun addDispositivo(dispositivo: BluetoothInfo){
+        Log.d("teste", "addDispositivo");
+        listaDispositivos.value = arrayListOf(dispositivo)
+    }
 }
