@@ -35,9 +35,14 @@ class InicioFragment : Fragment() {
             findNavController().navigate(R.id.acao_card_configuracao)
         }
 
-        val controleManual = root.findViewById<CardView>(R.id.cardControleManual);
-        controleManual.setOnClickListener {
+        val cardControleManual = root.findViewById<CardView>(R.id.cardControleManual);
+        cardControleManual.setOnClickListener {
             findNavController().navigate(R.id.acao_card_controle_manual)
+        }
+
+        val cardRelatorio = root.findViewById<CardView>(R.id.cardRelatorio);
+        cardRelatorio.setOnClickListener {
+            findNavController().navigate(R.id.acao_card_relatorio)
         }
 
         return root

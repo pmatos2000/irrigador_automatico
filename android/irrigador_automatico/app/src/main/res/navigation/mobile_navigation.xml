@@ -19,6 +19,9 @@
         <action
             android:id="@+id/acao_card_controle_manual"
             app:destination="@id/nav_controle" />
+        <action
+            android:id="@+id/acao_card_relatorio"
+            app:destination="@id/nav_relatorio" />
     </fragment>
 
     <fragment
@@ -38,5 +41,11 @@
         android:name="br.labmult.irrigadorautomatico.ui.controlemanual.ControleManualFragment"
         android:label="Controle Manual"
         tools:layout="@layout/fragment_controle_manual" />
+
+    <fragment
+        android:id="@+id/nav_relatorio"
+        android:name="br.labmult.irrigadorautomatico.ui.relatorio.RelatorioFragment"
+        android:label="Relatório"
+        tools:layout="@layout/relatorio_fragment" />
 
 </navigation>

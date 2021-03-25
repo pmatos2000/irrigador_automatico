@@ -50,7 +50,6 @@ class MainActivity : ComunicacaoComum, AppCompatActivity() {
     }
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         ref = this
         super.onCreate(savedInstanceState)
