@@ -1,3 +1,3 @@
-package br.labmult.irrigadorautomatico.ui.conexao
+package br.labmult.irrigadorautomatico
 
 class BluetoothInfo(val nome: String, val endereco: String)

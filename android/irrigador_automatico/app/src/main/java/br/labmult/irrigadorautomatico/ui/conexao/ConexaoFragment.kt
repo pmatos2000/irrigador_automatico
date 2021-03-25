@@ -1,6 +1,5 @@
 package br.labmult.irrigadorautomatico.ui.conexao
 
-import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.content.BroadcastReceiver
@@ -19,9 +18,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import br.labmult.irrigadorautomatico.R
+import br.labmult.irrigadorautomatico.*
 
-class ConexaoFragment : Fragment() {
+class ConexaoFragment : EnviaMensagemParaFragment,  Fragment() {
 
     private lateinit var conexaoViewModel:  ConexaoViewModel
 
@@ -41,7 +40,6 @@ class ConexaoFragment : Fragment() {
     }
 
     fun buscarBluetooth(){
-        Log.d("teste", "buscarBluetooth");
         //Usa o adaptador Bluetooth padrão para iniciar o processo de descoberta.
         val  btAdapter = BluetoothAdapter.getDefaultAdapter()
         if (btAdapter?.isEnabled == false) {
@@ -60,10 +58,6 @@ class ConexaoFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        activity?.unregisterReceiver(broadCastReceiver)
-    }
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -75,10 +69,17 @@ class ConexaoFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_conexao, container, false)
         val containerConexoes = root.findViewById<LinearLayout>(R.id.containerConexoes)
         conexaoViewModel.listaDispositivos.observe(viewLifecycleOwner, Observer { listaDispositivos ->
-            listaDispositivos.forEach {
+            listaDispositivos.forEach { dispositivos ->
                 val cardConexao = inflater.inflate(R.layout.card_conexao, null)
-                cardConexao.findViewById<TextView>(R.id.nomeDispositivo).text = it.nome
-                cardConexao.findViewById<TextView>(R.id.enderecoDispositivo).text = it.endereco
+                cardConexao.findViewById<TextView>(R.id.nomeDispositivo).text = dispositivos.nome
+                cardConexao.findViewById<TextView>(R.id.enderecoDispositivo).text = dispositivos.endereco
+                cardConexao.setOnClickListener {
+                    activity?.let {
+                        if(it is ComunicacaoComum){
+                            it.modificaDispositivoBluetooth(dispositivos)
+                        }
+                    }
+                }
                 containerConexoes.addView(cardConexao)
             }
         })
@@ -90,5 +91,13 @@ class ConexaoFragment : Fragment() {
         }
 
         return root
+    }
+
+    override fun mensagem(msg: String) {
+        Log.d("teste", "mensagem")
+        when(msg){
+            ConexaoBluetooth.CONEXAO_ERRO ->  Toast.makeText(context, "Conexão erro", Toast.LENGTH_LONG).show()
+            ConexaoBluetooth.CONEXAO_ERRO -> Toast.makeText(context, "Conexão sucesso", Toast.LENGTH_LONG).show()
+        }
     }
 }

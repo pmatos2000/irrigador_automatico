@@ -2,9 +2,9 @@ package br.labmult.irrigadorautomatico.ui.conexao
 
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import br.labmult.irrigadorautomatico.BluetoothInfo
 
 
 class ConexaoViewModel : ViewModel() {
